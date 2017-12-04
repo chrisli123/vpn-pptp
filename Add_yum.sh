@@ -1,7 +1,7 @@
 #一 添加YUM源EPEL
 #Add_yum.sh
 
-cat << EOF >> /etc/yum.repos.d/epel.repo
+cat <<EOF>> /etc/yum.repos.d/epel.repo
 [epel]
 name=Extra Packages for Enterprise Linux 7 - \$basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/7/\$basearch

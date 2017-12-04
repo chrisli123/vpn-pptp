@@ -1,0 +1,34 @@
+#五 配置VPN用户登录日志功能（可选）
+#1 新建 日志文件
+touch -f /var/log/pptpd/pptpd.log
+
+#3 编辑/etc/ppp/ip-up
+#在exit 0 前一行添加如下内容并保存
+
+echo "" >> /var/log/pptpd/pptpd.log
+echo "+++++++++++++++++++++++++++++++++++++User login infomation+++++++++++++++++++++++++++++++++++++++++++">> /var/log/pptpd/pptpd.log
+echo "Login time:       `date -d today +%F_%T`" >> /var/log/pptpd/pptpd.log
+echo "Login client IP:  $6" >> /var/log/pptpd/pptpd.log
+echo "Login username:   $PEERNAME" >> /var/log/pptpd/pptpd.log
+echo "Login device:     $1" >> /var/log/pptpd/pptpd.log
+echo "Login ip:         $4" >> /var/log/pptpd/pptpd.log
+echo "Assign ip:        $5" >>/var/log/pptpd/pptpd.log
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" >> /var/log/pptpd/pptpd.log
+
+#4 编辑/etc/ppp/ip-down
+#  在exit 0前一行添加如下内容并保存
+
+echo "" >> /var/log/pptpd/pptpd.log
+echo "+++++++++++++++++++++++++++++++++++++User logout infomation++++++++++++++++++++++++++++++++++++++++++">> /var/log/pptpd/pptpd.log
+echo "Login time:       `date -d today +%F_%T`" >> /var/log/pptpd/pptpd.log
+echo "Login client IP:  $6" >> /var/log/pptpd/pptpd.log
+echo "Login username:   $PEERNAME" >> /var/log/pptpd/pptpd.log
+echo "Login device:     $1" >> /var/log/pptpd/pptpd.log
+echo "Login ip:         $4" >> /var/log/pptpd/pptpd.log
+echo "Assign ip:        $5" >>/var/log/pptpd/pptpd.log
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" >> /var/log/pptpd/pptpd.log
+
+#5 重启pptpd服务
+systemctl restart pptpd.service
+
+#6 配置完毕！

@@ -14,6 +14,6 @@
     1 添加有PPTP软件的YUM ，此处采用EPEL；
     2 下载安装PPTP、iptables及相关软件包；
     3 配置PPTP、PPP；
-    4 配置IPtables
-    5 安装完毕，启动服务,
+    4 配置IPtables;
+    5 安装完毕，启动服务;
     6 配置登录日志功能（可选）。
